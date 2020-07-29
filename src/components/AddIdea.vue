@@ -1,7 +1,7 @@
 <template>
 	<form @submit="addIdea">
 		<input type="text" name="title" placeholder="title" v-model="title" />
-		<input type="text" name="text" placeholder="text" v-model="text" />
+		<textarea type="text" name="text" placeholder="text" v-model="text" />
 		<input class="submit-btn" type="submit" value="add idea" />
 	</form>
 </template>
@@ -44,8 +44,15 @@ form {
 	flex-direction: column;
 }
 
-input {
+input,
+textarea {
 	margin: 0.5rem;
 	padding: 0.2rem;
+	text-align: left;
+	width: 25rem;
+}
+
+.submit-btn {
+	text-align: center;
 }
 </style>

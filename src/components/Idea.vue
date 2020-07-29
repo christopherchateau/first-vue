@@ -30,7 +30,7 @@ h4 {
 }
 
 input {
-    cursor: pointer;
+	cursor: pointer;
 	margin-left: 0.5rem;
 }
 
@@ -48,7 +48,7 @@ input {
 }
 
 .delete {
-    cursor: pointer;
+	cursor: pointer;
 	position: absolute;
 	right: 0;
 	top: 0;
