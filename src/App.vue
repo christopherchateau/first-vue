@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <Title title="ideabox" />
-        <Ideas />
+        <Ideas v-bind:ideas="ideas" />
     </div>
 </template>
 
@@ -17,7 +17,20 @@ export default {
     },
     data() {
         return {
-            ideas: [],
+            ideas: [
+                {
+                    title: "great idea",
+                    text: "wait nevermind",
+                },
+                {
+                    title: "good idea",
+                    text: "eat pizza",
+                },
+                {
+                    title: "crappy idea",
+                    text: "refuse pizza",
+                },
+            ],
         };
     },
 };
