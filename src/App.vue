@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div class="app">
         <Title title="ideabox" />
         <Ideas v-bind:ideas="ideas" />
     </div>
@@ -19,16 +19,19 @@ export default {
         return {
             ideas: [
                 {
-                    title: "great idea",
-                    text: "wait nevermind",
+                    title: "pizza idea #1",
+                    text: "accept pizza",
+                    isBad: false,
                 },
                 {
-                    title: "good idea",
+                    title: "pizza idea #2",
                     text: "eat pizza",
+                    isBad: false,
                 },
                 {
-                    title: "crappy idea",
+                    title: "pizza idea #3",
                     text: "refuse pizza",
+                    isBad: true,
                 },
             ],
         };
@@ -39,11 +42,13 @@ export default {
 <style>
 * {
     box-sizing: border-box;
+    font-family: "Courier New", Courier, monospace;
     margin: 0;
     padding: 0;
+    text-align: center;
 }
 
-#app {
+.app {
     border: 2px solid grey;
     margin: 2rem;
     padding: 2rem;
