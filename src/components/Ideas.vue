@@ -1,15 +1,19 @@
 <template>
     <div id="ideas">
         <div v-bind:key="idea.title" v-for="idea in ideas">
-            <h2>{{ idea.title }}</h2>
-            <h3>{{ idea.text }}</h3>
+            <Idea v-bind:idea="idea" />
         </div>
     </div>
 </template>
 
 <script>
+import Idea from "./Idea.vue";
+
 export default {
     name: "Ideas",
+    components: {
+        Idea,
+    },
     props: ["ideas"],
 };
 </script>
