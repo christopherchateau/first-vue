@@ -1,7 +1,7 @@
 <template>
 	<div class="app">
 		<Title title="ideabox" />
-		<AddIdea />
+		<AddIdea v-on:add-idea="addIdea" />
 		<Ideas v-bind:ideas="ideas" v-on:delete-idea="deleteIdea" />
 	</div>
 </template>
@@ -52,6 +52,9 @@ export default {
 	methods: {
 		deleteIdea(id) {
 			this.ideas = this.ideas.filter(idea => idea.id !== id)
+		},
+		addIdea(newIdea) {
+			this.ideas = [newIdea, ...this.ideas]
 		},
 	},
 }

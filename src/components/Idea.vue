@@ -1,6 +1,6 @@
 <template>
 	<div class="idea" v-bind:class="{ 'is-bad': idea.isBad }">
-		<button class="delete" v-on:click="$emit('delete-idea', idea.id)">x</button>
+		<button class="delete" @click="$emit('delete-idea', idea.id)">x</button>
 		<h2>{{ idea.title }}</h2>
 		<h3 class="text">{{ idea.text }}</h3>
 		<h4>bad idea</h4>
@@ -30,7 +30,8 @@ h4 {
 }
 
 input {
-	margin-left: 0.4rem;
+    cursor: pointer;
+	margin-left: 0.5rem;
 }
 
 .idea {
@@ -47,6 +48,7 @@ input {
 }
 
 .delete {
+    cursor: pointer;
 	position: absolute;
 	right: 0;
 	top: 0;
