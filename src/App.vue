@@ -1,16 +1,24 @@
 <template>
     <div id="app">
-        <HelloWorld title="ideabox" />
+        <Title title="ideabox" />
+        <Ideas />
     </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import Title from "./components/Title.vue";
+import Ideas from "./components/Ideas.vue";
 
 export default {
     name: "App",
     components: {
-        HelloWorld,
+        Title,
+        Ideas,
+    },
+    data() {
+        return {
+            ideas: [],
+        };
     },
 };
 </script>

@@ -1,18 +1,18 @@
 <template>
-    <h1>{{ title }}</h1>
+    <div id="ideas"></div>
 </template>
 
 <script>
 export default {
-    name: "HelloWorld",
+    name: "Ideas",
     props: {
-        title: String,
+
     },
 };
 </script>
 
 <style scoped>
-h1 {
-    text-align: center;
+#ideas {
+    border: 2px solid grey;
 }
 </style>
