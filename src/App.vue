@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <HelloWorld msg="sup" />
+        <HelloWorld title="ideabox" />
     </div>
 </template>
 
@@ -20,5 +20,11 @@ export default {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+#app {
+    border: 2px solid grey;
+    margin: 2rem;
+    padding: 2rem;
 }
 </style>
