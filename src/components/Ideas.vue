@@ -1,7 +1,7 @@
 <template>
-    <div id="ideas">
+    <div class="ideas">
         <div v-bind:key="idea.title" v-for="idea in ideas">
-            <Idea v-bind:idea="idea" />
+            <Idea v-bind:idea="idea" v-on:delete-idea="$emit('delete-idea', idea.id)" />
         </div>
     </div>
 </template>
@@ -19,7 +19,11 @@ export default {
 </script>
 
 <style scoped>
-#ideas {
+.ideas {
+    align-items: center;
     border: 2px solid grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 </style>

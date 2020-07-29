@@ -1,7 +1,7 @@
 <template>
     <div class="app">
         <Title title="ideabox" />
-        <Ideas v-bind:ideas="ideas" />
+        <Ideas v-bind:ideas="ideas" v-on:delete-idea="deleteIdea"/>
     </div>
 </template>
 
@@ -19,23 +19,31 @@ export default {
         return {
             ideas: [
                 {
+                    id: 1,
                     title: "pizza idea #1",
                     text: "accept pizza",
                     isBad: false,
                 },
                 {
+                    id: 2,
                     title: "pizza idea #2",
                     text: "eat pizza",
                     isBad: false,
                 },
                 {
+                    id: 3,
                     title: "pizza idea #3",
                     text: "refuse pizza",
-                    isBad: true,
+                    isBad: false,
                 },
             ],
         };
     },
+    methods: {
+      deleteIdea(id) {
+        this.ideas = this.ideas.filter(idea => idea.id !== id)
+      }
+    }
 };
 </script>
 
