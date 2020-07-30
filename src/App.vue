@@ -2,21 +2,24 @@
 	<div class="app">
 		<Title title="ideabox" />
 		<AddIdea v-on:add-idea="addIdea" />
+		<FilterIdeas />
 		<Ideas v-bind:ideas="ideas" v-on:delete-idea="deleteIdea" />
 	</div>
 </template>
 
 <script>
-import Title from './components/Title.vue'
-import AddIdea from './components/AddIdea.vue'
-import Ideas from './components/Ideas.vue'
+import Title from './components/Title'
+import Ideas from './components/Ideas'
+import AddIdea from './components/AddIdea'
+import FilterIdeas from './components/FilterIdeas'
 
 export default {
 	name: 'App',
 	components: {
 		Title,
-		AddIdea,
 		Ideas,
+		AddIdea,
+		FilterIdeas,
 	},
 	data() {
 		return {
