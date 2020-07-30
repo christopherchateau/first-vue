@@ -1,32 +1,22 @@
 <template>
 	<div class="idea" :class="{ 'is-bad': idea.isBad }">
-		<button class="delete" @click="handleDelete">x</button>
+		<button class="delete" @click="deleteIdea(idea.id)">x</button>
 		<h2>{{ idea.title }}</h2>
 		<h3 class="text">{{ idea.text }}</h3>
 		<h4>bad idea</h4>
-		<input type="checkbox" v-on:change="markBad" />
+		<input type="checkbox" v-on:change="toggleBadIdea(idea.id)" />
 	</div>
 </template>
 
 <script>
-import  { mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
 	name: 'Idea',
 
 	props: ['idea'],
 
-	methods: {
-		...mapActions(['deleteIdea']),
-
-		handleDelete() {
-			this.deleteIdea(this.idea.id)
-		},
-
-		markBad() {
-			this.idea.isBad = !this.idea.isBad
-		},
-	},
+	methods: mapActions(['deleteIdea', 'toggleBadIdea']),
 }
 </script>
 

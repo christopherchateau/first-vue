@@ -41,6 +41,8 @@ const actions = {
 		commit('newIdea', { title, text, id: Date.now(), isBad: false }),
 
 	deleteIdea: ({ commit }, id) => commit('oldIdea', id),
+
+	toggleBadIdea: ({ commit }, id) => commit('badIdea', id),
 }
 
 const mutations = {
@@ -50,6 +52,12 @@ const mutations = {
 
 	oldIdea: (state, id) =>
 		(state.ideas = state.ideas.filter(idea => idea.id !== id)),
+
+	badIdea: (state, id) =>
+		(state.ideas = state.ideas.map(idea => {
+			if (idea.id === id) idea.isBad = !idea.isBad
+			return idea
+		})),
 }
 
 export default {
