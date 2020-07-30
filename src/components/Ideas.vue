@@ -1,6 +1,6 @@
 <template>
 	<div class="ideas">
-		<div v-bind:key="idea.title" v-for="idea in ideas">
+		<div :key="idea.title" v-for="idea in allIdeas">
 			<Idea
 				v-bind:idea="idea"
 				v-on:delete-idea="$emit('delete-idea', idea.id)"
@@ -10,12 +10,20 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 import Idea from './Idea.vue'
 
 export default {
 	name: 'Ideas',
+	created() {
+		this.loadIdeas()
+	},
 	components: {
 		Idea,
+	},
+	computed: mapGetters(['allIdeas']),
+	methods: {
+		...mapActions(['loadIdeas']),
 	},
 	props: ['ideas'],
 }
@@ -23,8 +31,7 @@ export default {
 
 <style scoped>
 .ideas {
-    align-items: center;
-	border: 2px solid grey;
+	align-items: center;
 	display: flex;
 	flex-direction: column;
 }
