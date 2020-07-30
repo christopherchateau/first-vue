@@ -1,9 +1,13 @@
 <template>
-	<div class="ideas">
+	<div class="ideas" v-if="displayIdeas.length">
 		<div :key="idea.id" v-for="idea in displayIdeas">
 			<Idea v-bind:idea="idea" />
 		</div>
 	</div>
+	<h3 class="no-ideas" v-else>
+		you must have SOME ideas
+		<h1>😘</h1>
+	</h3>
 </template>
 
 <script>
@@ -18,7 +22,7 @@ export default {
 	},
 
 	computed: mapGetters(['displayIdeas']),
-	
+
 	props: ['ideas'],
 
 	created() {
@@ -34,5 +38,9 @@ export default {
 	align-items: center;
 	display: flex;
 	flex-direction: column;
+}
+
+.no-ideas {
+	margin-top: 2rem;
 }
 </style>
