@@ -1,5 +1,5 @@
 <template>
-	<form @submit="handleSubmit">
+	<form @submit="onSubmit">
 		<input type="text" name="title" placeholder="title" v-model="title" />
 		<textarea type="text" name="text" placeholder="text" v-model="text" />
 		<input class="submit-btn" type="submit" value="add idea" />
@@ -11,16 +11,11 @@ import { mapActions } from 'vuex'
 
 export default {
 	name: 'AddIdea',
-	data() {
-		return {
-			title: '',
-			text: '',
-		}
-	},
+
 	methods: {
 		...mapActions(['addIdea']),
 
-		handleSubmit(e) {
+		onSubmit(e) {
 			e.preventDefault()
 			this.addIdea({ title: this.title, text: this.text })
 			this.clearFields()
@@ -30,6 +25,13 @@ export default {
 			this.title = ''
 			this.text = ''
 		},
+	},
+
+	data() {
+		return {
+			title: '',
+			text: '',
+		}
 	},
 }
 </script>

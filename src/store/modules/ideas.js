@@ -39,12 +39,17 @@ const actions = {
 
 	addIdea: ({ commit }, { title, text }) =>
 		commit('newIdea', { title, text, id: Date.now(), isBad: false }),
+
+	deleteIdea: ({ commit }, id) => commit('oldIdea', id),
 }
 
 const mutations = {
 	setIdeas: (state, ideas) => (state.ideas = ideas),
 
 	newIdea: (state, idea) => state.ideas.unshift(idea),
+
+	oldIdea: (state, id) =>
+		(state.ideas = state.ideas.filter(idea => idea.id !== id)),
 }
 
 export default {

@@ -1,6 +1,6 @@
 <template>
-	<div class="idea" v-bind:class="{ 'is-bad': idea.isBad }">
-		<button class="delete" @click="$emit('delete-idea', idea.id)">x</button>
+	<div class="idea" :class="{ 'is-bad': idea.isBad }">
+		<button class="delete" @click="handleDelete">x</button>
 		<h2>{{ idea.title }}</h2>
 		<h3 class="text">{{ idea.text }}</h3>
 		<h4>bad idea</h4>
@@ -9,10 +9,20 @@
 </template>
 
 <script>
+import  { mapActions } from 'vuex'
+
 export default {
 	name: 'Idea',
+
 	props: ['idea'],
+
 	methods: {
+		...mapActions(['deleteIdea']),
+
+		handleDelete() {
+			this.deleteIdea(this.idea.id)
+		},
+
 		markBad() {
 			this.idea.isBad = !this.idea.isBad
 		},
