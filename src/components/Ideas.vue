@@ -1,10 +1,7 @@
 <template>
 	<div class="ideas">
-		<div :key="idea.id" v-for="idea in allIdeas">
-			<Idea
-				v-bind:idea="idea"
-				v-on:delete-idea="$emit('delete-idea', idea.id)"
-			/>
+		<div :key="idea.id" v-for="idea in displayIdeas">
+			<Idea v-bind:idea="idea" />
 		</div>
 	</div>
 </template>
@@ -20,17 +17,15 @@ export default {
 		Idea,
 	},
 
-	computed: mapGetters(['allIdeas']),
-
-	methods: {
-		...mapActions(['loadIdeas']),
-	},
-
+	computed: mapGetters(['displayIdeas']),
+	
 	props: ['ideas'],
 
 	created() {
 		this.loadIdeas()
 	},
+
+	methods: mapActions(['loadIdeas']),
 }
 </script>
 

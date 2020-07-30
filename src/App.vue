@@ -1,9 +1,9 @@
 <template>
 	<div class="app">
 		<Title title="ideabox" />
-		<AddIdea v-on:add-idea="addIdea" />
+		<AddIdea />
 		<FilterIdeas />
-		<Ideas v-bind:ideas="ideas" v-on:delete-idea="deleteIdea" />
+		<Ideas />
 	</div>
 </template>
 
@@ -20,19 +20,6 @@ export default {
 		Ideas,
 		AddIdea,
 		FilterIdeas,
-	},
-	data() {
-		return {
-			ideas: [],
-		}
-	},
-	methods: {
-		deleteIdea(id) {
-			this.ideas = this.ideas.filter(idea => idea.id !== id)
-		},
-		addIdea(newIdea) {
-			this.ideas = [newIdea, ...this.ideas]
-		},
 	},
 }
 </script>

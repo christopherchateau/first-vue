@@ -1,10 +1,16 @@
 <template>
-	<div class="idea" :class="{ 'is-bad': idea.isBad }">
+	<div class="idea" :class="{ bad: idea.isBad }">
 		<button class="delete" @click="deleteIdea(idea.id)">x</button>
+
 		<h2>{{ idea.title }}</h2>
-		<h3 class="text">{{ idea.text }}</h3>
+		<h3>{{ idea.text }}</h3>
+
 		<h4>bad idea</h4>
-		<input type="checkbox" v-on:change="toggleBadIdea(idea.id)" />
+		<input
+			type="checkbox"
+			v-on:change="toggleBadIdea(idea.id)"
+			:checked="idea.isBad"
+		/>
 	</div>
 </template>
 
@@ -25,6 +31,10 @@ h2 {
 	border-bottom: 1px solid white;
 }
 
+h3 {
+	margin: 1rem 0;
+}
+
 h4 {
 	display: inline-block;
 }
@@ -43,10 +53,6 @@ input {
 	position: relative;
 }
 
-.text {
-	margin: 1rem 0;
-}
-
 .delete {
 	cursor: pointer;
 	position: absolute;
@@ -54,7 +60,11 @@ input {
 	top: 0;
 }
 
-.is-bad {
+.bad {
 	background: darkred;
+}
+
+.hide {
+	display: none;
 }
 </style>

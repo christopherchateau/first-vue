@@ -28,10 +28,17 @@ const mockIdeas = [
 
 const state = {
 	ideas: [],
+	selectedFilter: 'all',
 }
 
 const getters = {
-	allIdeas: state => state.ideas,
+	displayIdeas: ({ ideas, selectedFilter }) =>
+		ideas.filter(
+			idea =>
+				selectedFilter === 'all' ||
+				(selectedFilter === 'bad' && idea.isBad) ||
+				(selectedFilter === 'good' && !idea.isBad)
+		),
 }
 
 const actions = {
@@ -41,6 +48,8 @@ const actions = {
 		commit('newIdea', { title, text, id: Date.now(), isBad: false }),
 
 	deleteIdea: ({ commit }, id) => commit('oldIdea', id),
+
+	filterIdeas: ({ commit }, e) => commit('updateFilter', e.target.value),
 
 	toggleBadIdea: ({ commit }, id) => commit('badIdea', id),
 }
@@ -58,6 +67,8 @@ const mutations = {
 			if (idea.id === id) idea.isBad = !idea.isBad
 			return idea
 		})),
+
+	updateFilter: (state, filter) => (state.selectedFilter = filter),
 }
 
 export default {
