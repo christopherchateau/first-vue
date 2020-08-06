@@ -29,16 +29,23 @@ const mockIdeas = [
 const state = {
 	ideas: [],
 	selectedFilter: 'all',
+	search: '',
 }
 
 const getters = {
-	displayIdeas: ({ ideas, selectedFilter }) =>
-		ideas.filter(
-			idea =>
-				selectedFilter === 'all' ||
-				(selectedFilter === 'bad' && idea.isBad) ||
-				(selectedFilter === 'good' && !idea.isBad)
-		),
+	displayIdeas: ({ ideas, selectedFilter, search }) => {
+		const filterIdeas = idea =>
+			selectedFilter === 'all' ||
+			(selectedFilter === 'bad' && idea.isBad) ||
+			(selectedFilter === 'good' && !idea.isBad)
+
+		const searchIdeas = idea =>
+			!search ||
+			(search && idea.title.toLowerCase().includes(search)) ||
+			(search && idea.text.toLowerCase().includes(search))
+
+		return ideas.filter(idea => filterIdeas(idea) && searchIdeas(idea))
+	},
 }
 
 const actions = {
@@ -52,6 +59,9 @@ const actions = {
 	filterIdeas: ({ commit }, e) => commit('updateFilter', e.target.value),
 
 	toggleBadIdea: ({ commit }, id) => commit('badIdea', id),
+
+	updateSearch: ({ commit }, input) =>
+		commit('searchInput', input.target.value.toLowerCase()),
 }
 
 const mutations = {
@@ -69,6 +79,8 @@ const mutations = {
 		})),
 
 	updateFilter: (state, filter) => (state.selectedFilter = filter),
+
+	searchInput: (state, input) => (state.search = input),
 }
 
 export default {

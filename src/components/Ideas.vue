@@ -23,8 +23,6 @@ export default {
 
 	computed: mapGetters(['displayIdeas']),
 
-	props: ['ideas'],
-
 	created() {
 		this.loadIdeas()
 	},
