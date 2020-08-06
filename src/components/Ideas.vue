@@ -1,29 +1,44 @@
 <template>
-    <div class="ideas">
-        <div v-bind:key="idea.title" v-for="idea in ideas">
-            <Idea v-bind:idea="idea" v-on:delete-idea="$emit('delete-idea', idea.id)" />
-        </div>
-    </div>
+	<div class="ideas" v-if="displayIdeas.length">
+		<div :key="idea.id" v-for="idea in displayIdeas">
+			<Idea v-bind:idea="idea" />
+		</div>
+	</div>
+	<h3 class="no-ideas" v-else>
+		you must have SOME ideas
+		<h1>😘</h1>
+	</h3>
 </template>
 
 <script>
-import Idea from "./Idea.vue";
+import { mapGetters, mapActions } from 'vuex'
+import Idea from './Idea.vue'
 
 export default {
-    name: "Ideas",
-    components: {
-        Idea,
-    },
-    props: ["ideas"],
-};
+	name: 'Ideas',
+
+	components: {
+		Idea,
+	},
+
+	computed: mapGetters(['displayIdeas']),
+
+	created() {
+		this.loadIdeas()
+	},
+
+	methods: mapActions(['loadIdeas']),
+}
 </script>
 
 <style scoped>
 .ideas {
-    align-items: center;
-    border: 2px solid grey;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}
+
+.no-ideas {
+	margin-top: 2rem;
 }
 </style>

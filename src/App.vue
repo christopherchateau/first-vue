@@ -1,64 +1,52 @@
 <template>
-    <div class="app">
-        <Title title="ideabox" />
-        <Ideas v-bind:ideas="ideas" v-on:delete-idea="deleteIdea"/>
-    </div>
+	<div class="app">
+		<Title title="ideabox" />
+		<AddIdea />
+		<SearchIdeas />
+		<FilterIdeas />
+		<Ideas />
+	</div>
 </template>
 
 <script>
-import Title from "./components/Title.vue";
-import Ideas from "./components/Ideas.vue";
+import Title from './components/Title'
+import Ideas from './components/Ideas'
+import AddIdea from './components/AddIdea'
+import SearchIdeas from './components/SearchIdeas'
+import FilterIdeas from './components/FilterIdeas'
 
 export default {
-    name: "App",
-    components: {
-        Title,
-        Ideas,
-    },
-    data() {
-        return {
-            ideas: [
-                {
-                    id: 1,
-                    title: "pizza idea #1",
-                    text: "accept pizza",
-                    isBad: false,
-                },
-                {
-                    id: 2,
-                    title: "pizza idea #2",
-                    text: "eat pizza",
-                    isBad: false,
-                },
-                {
-                    id: 3,
-                    title: "pizza idea #3",
-                    text: "refuse pizza",
-                    isBad: false,
-                },
-            ],
-        };
-    },
-    methods: {
-      deleteIdea(id) {
-        this.ideas = this.ideas.filter(idea => idea.id !== id)
-      }
-    }
-};
+	name: 'App',
+	components: {
+		Title,
+		Ideas,
+		AddIdea,
+		SearchIdeas,
+		FilterIdeas,
+	},
+}
 </script>
 
 <style>
 * {
-    box-sizing: border-box;
-    font-family: "Courier New", Courier, monospace;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+	box-sizing: border-box;
+	font-family: 'Courier New', Courier, monospace;
+	margin: 0;
+	padding: 0;
+	text-align: center;
 }
 
 .app {
-    border: 2px solid grey;
-    margin: 2rem;
-    padding: 2rem;
+	border: 2px solid grey;
+	margin: 2rem;
+	padding: 2rem;
+}
+
+input,
+textarea {
+	margin: 0.5rem;
+	padding: 0.2rem;
+	text-align: left;
+	width: 25rem;
 }
 </style>
