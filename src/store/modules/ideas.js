@@ -39,10 +39,10 @@ const getters = {
 			(selectedFilter === 'bad' && idea.isBad) ||
 			(selectedFilter === 'good' && !idea.isBad)
 
-		const searchIdeas = idea =>
+		const searchIdeas = ({ title, text }) =>
 			!search ||
-			(search && idea.title.toLowerCase().includes(search)) ||
-			(search && idea.text.toLowerCase().includes(search))
+			title.toLowerCase().includes(search) ||
+			text.toLowerCase().includes(search)
 
 		return ideas.filter(idea => filterIdeas(idea) && searchIdeas(idea))
 	},

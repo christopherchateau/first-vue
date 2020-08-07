@@ -1,7 +1,7 @@
 <template>
 	<div class="ideas" v-if="displayIdeas.length">
 		<div :key="idea.id" v-for="idea in displayIdeas">
-			<Idea v-bind:idea="idea" />
+			<Idea :idea="idea" />
 		</div>
 	</div>
 	<h3 class="no-ideas" v-else>

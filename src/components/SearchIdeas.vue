@@ -1,6 +1,10 @@
 <template>
 	<div>
-		<input type="text" placeholder="search" v-on:keyup="updateSearch($event)" />
+		<input
+			type="text"
+			placeholder="search"
+			@keyup="updateSearch($event)"
+		/>
 	</div>
 </template>
 
