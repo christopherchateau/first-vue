@@ -1,23 +1,19 @@
 <template>
-	<div>
-		<input
-			type="text"
-			placeholder="search"
-			@keyup="updateSearch($event)"
-		/>
-	</div>
+    <div>
+        <input type="text" placeholder="search" @keyup="updateSearch($event)" />
+    </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions } from "vuex";
 
 export default {
-	name: 'SearchIdeas',
+    name: "SearchIdeas",
 
-	methods: {
-		...mapActions(['updateSearch']),
-	},
-}
+    methods: {
+        ...mapActions(["updateSearch"]),
+    },
+};
 </script>
 
 <style scoped></style>
