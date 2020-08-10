@@ -7,13 +7,17 @@
 
         <h4>
             bad idea
-            <input type="checkbox" @change="toggleBadIdea(idea.id)" :checked="idea.isBad" />
+            <input
+                type="checkbox"
+                @change="toggleBadIdea(idea.id)"
+                :checked="idea.isBad"
+            />
         </h4>
     </div>
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from "vuex"
 
 export default {
     name: "Idea",
@@ -21,7 +25,7 @@ export default {
     props: ["idea"],
 
     methods: mapActions(["deleteIdea", "toggleBadIdea"]),
-};
+}
 </script>
 
 <style scoped>

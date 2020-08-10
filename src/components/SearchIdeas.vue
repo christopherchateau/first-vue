@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from "vuex"
 
 export default {
     name: "SearchIdeas",
@@ -13,7 +13,7 @@ export default {
     methods: {
         ...mapActions(["updateSearch"]),
     },
-};
+}
 </script>
 
 <style scoped></style>
